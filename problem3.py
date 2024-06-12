@@ -22,7 +22,7 @@ def PCA(X , num_components):
     eigen_values , eigen_vectors = np.linalg.eigh(cov_mat)
     
     ### sort from highest to lowest eigenvalues
-    eigen_vectors = eigen_vectors[:, np.argsort(-eigen_values)]
+    eigen_vectors = eigen_vectors[:, np.argsort(-eigen_values)] 
     eigen_values  = eigen_values[np.argsort(-eigen_values)]
     
     ### Fill in ################################

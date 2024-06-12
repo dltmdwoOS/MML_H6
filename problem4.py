@@ -1,4 +1,3 @@
-
 import numpy as np
 from matplotlib.image import imread
 import matplotlib.pyplot as plt
@@ -52,12 +51,13 @@ if __name__ == "__main__":
     ### Reconstructe image: make X_tilde using B_10, B_50, B_100, B_500, B_1000
     ### Don't forget PCA is performed on the mean-shifted image. So you have to add the mean after reconstruction!
     ### Fill in ################################
-    X_tilde_10    = np.matmul(np.matmul(B_10, np.transpose(B_10)), X) + X_mean
-    X_tilde_50    = np.matmul(np.matmul(B_50, np.transpose(B_50)), X) + X_mean
-    X_tilde_100   = np.matmul(np.matmul(B_100, np.transpose(B_100)), X) + X_mean
-    X_tilde_500   = np.matmul(np.matmul(B_500, np.transpose(B_500)), X) + X_mean
-    X_tilde_1000  = np.matmul(np.matmul(B_1000, np.transpose(B_1000)), X) + X_mean
-    ############################################    
+    X_shifted = X - X_mean
+    X_tilde_10    = np.matmul(np.matmul(B_10, np.transpose(B_10)), X_shifted) + X_mean
+    X_tilde_50    = np.matmul(np.matmul(B_50, np.transpose(B_50)), X_shifted) + X_mean
+    X_tilde_100   = np.matmul(np.matmul(B_100, np.transpose(B_100)), X_shifted) + X_mean
+    X_tilde_500   = np.matmul(np.matmul(B_500, np.transpose(B_500)), X_shifted) + X_mean
+    X_tilde_1000  = np.matmul(np.matmul(B_1000, np.transpose(B_1000)), X_shifted) + X_mean
+    ############################################   
 
     for K in [10, 50, 100, 500, 1000]:
         plt.figure(figsize=[12,8])
