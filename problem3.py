@@ -27,7 +27,7 @@ def PCA(X , num_components):
     
     ### Fill in ################################
     B         = eigen_vectors[:, :num_components]
-    Z         = np.matmul(np.transpose(B), X)
+    Z         = np.matmul(np.transpose(B), X_shifted)
     ############################################    
     
     return Z
